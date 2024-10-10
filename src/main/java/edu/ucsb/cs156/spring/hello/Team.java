@@ -1,6 +1,7 @@
 package edu.ucsb.cs156.spring.hello;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A class to represent a team of developers.
@@ -26,13 +27,15 @@ public class Team {
         this.name = name;
         this.members = new ArrayList<String>();
     }
+
     /**
      * Add a member to the team
-     * @param member members name
+     * @param member member's name
      */
     public void addMember(String member) {
         this.members.add(member);
     }
+
     /*
      * Get the name of the team
      * @return the name of the team
@@ -40,6 +43,7 @@ public class Team {
     public String getName() {
         return this.name;
     }
+
     /*
      * Get the members of the team
      * @return the members of the team
@@ -48,14 +52,12 @@ public class Team {
         return this.members;
     }
 
-    /** setter for name */
+    /** Setter for name */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * setter for members
-     */
+    /** Setter for members */
     public void setMembers(ArrayList<String> members) {
         this.members = members;
     }
@@ -77,19 +79,20 @@ public class Team {
         return this.name.equals(other.name) && this.members.equals(other.members);
     }
 
+    /**
+     * Get a hash code for the team
+     * The hash code is calculated based on the team's name and members.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.name, this.members);
+    }
+
     /*
      * Get a string representation of the team
      */
     @Override
     public String toString() {
         return "Team(name=" + this.name + ", members=" + this.members + ")";
-    }
-
-    /**
-     * Get a hash code for the team
-     */
-    @Override
-    public int hashCode() {
-        return this.name.hashCode() | this.members.hashCode();
     }
 }
